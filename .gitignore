@@ -1,0 +1,11 @@
+Session.vim
+*.swp
+.fuse*
+stl/*
+models/*
+*.3mf
+*.scad
+__pycache__/
+*.isdep
+*.dep
+
