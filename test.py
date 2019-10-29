@@ -4,10 +4,12 @@ from solid.utils import *
 
 from constants import *
 from super_hole import *
+from references import *
 
 h: float = 70
 t: float = 5
 screw_m_y: float = 15
+outer_d = fork_d + (2 * t)
 
 def screw_mount():
     model = cube([t, screw_m_y, h])
@@ -28,8 +30,6 @@ def screw_mount():
     return model
 
 def fork_mount():
-    outer_d = fork_d + (2 * t)
-    
     model = cylinder(h = h, d = outer_d)
     model -= cylinder(h = h, d = fork_d)
     model -= back(outer_d / 2)(cube(h))
@@ -55,7 +55,24 @@ def fork_mount():
     return model
 
 def main_mount():
-    model = fork_mount()
+    x = 60
+
+    model = circle(d = 20)
+    model = translate([10, 10])(model)
+    model += right(x)(square([1, h]))
+    model = hull()(model)
+    model = linear_extrude(t)(model)
+
+    ic = rotate(90, DOWN_VEC)(indicator_hole())
+    ic = forward(20)(ic)
+    ic = right(30)(ic)
+
+    model += ic
+    model = rotate(90, RIGHT_VEC)(model)
+    model = rotate(90, UP_VEC)(model)
+    model = back(x + screw_m_y + (outer_d / 2) - 1)(model)
+
+    model += fork_mount()
 
     return model
 
