@@ -4,7 +4,8 @@ from solid import *
 from solid.utils import *
 
 def super_hole(model, name):
-    fn = '.%s_%s.scad'% (inspect.stack()[1].filename[:-3], name)
+    fnpart = inspect.stack()[1].filename[:-3].split('/')[-1]
+    fn = '.%s_%s.scad'% (fnpart, name)
     content = """
     module %s() {
     %s
