@@ -10,7 +10,6 @@ if __name__ == '__main__':
     z: float = 25
     t: float = 5
     tab_y: float = y - 20
-    screw_d = 3
 
     model = cube([x, y, t])
     model += cube([t, tab_y, z + t])
@@ -22,9 +21,7 @@ if __name__ == '__main__':
 
     model = forward(y)(rotate(180, RIGHT_VEC)(model))
 
-    bucket_tab_x: float = 35
     bucket_tab_z: float = 43
-    bucket_tab_screw_offset_x: float = 10
     model += right((x - bucket_tab_x) / 2)(
         cube([bucket_tab_x, t, bucket_tab_z])
         + forward(t)(chamfer(bucket_tab_x, 10))
