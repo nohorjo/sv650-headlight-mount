@@ -22,20 +22,18 @@ if __name__ == '__main__':
     tab_r: float = 80
     tab_x: float = 10
     tab_y: float = 2
-    tab = cube([tab_x, tab_y, 8], True)
-    tab = up(8 / 2)(tab)
-    tab += translate([-tab_x / 2, tab_y / 2, 1])(chamfer(tab_x, 3))
+    tab_z: float = 8
+    tab = cube([tab_x, tab_y, tab_z], True)
+    tab = up(tab_z / 2)(tab)
+    tab += left(tab_x / 2)(cube([tab_x, 10, thick]))
+    tab += translate([-tab_x / 2, tab_y / 2, 1])(
+        chamfer(tab_x, 3)
+        + translate([0, 3, -1])(rotate(180, RIGHT_VEC)(chamfer(tab_x, 2)))
+    )
     tab = translate([0, tab_r, base_h])(tab)
 
     for i in range(3):
         model += rotate(120 * i, UP_VEC)(tab)
-
-    tab_base = circle(r = outer_r)
-    tab_base -= circle(r = tab_r)
-    tab_base = linear_extrude(thick / 2)(tab_base)
-    tab_base = up(base_h)(tab_base)
-
-    model += tab_base
 
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
 
