@@ -7,7 +7,7 @@ from references import *
 from chamfer import *
 
 if __name__ == '__main__':
-    outer_r: float = 83
+    outer_r: float = 90
     thick: float = 3
     base_h: float = thick + 3
     model = circle(r = outer_r + thick)
@@ -19,9 +19,9 @@ if __name__ == '__main__':
     gap = linear_extrude(thick)(gap)
     model -= gap
 
-    tab_r: float = 71.6
-    tab_x: float = 11
-    tab_y: float = 2.5
+    tab_r: float = 80
+    tab_x: float = 10
+    tab_y: float = 2
     tab = cube([tab_x, tab_y, 8], True)
     tab = up(8 / 2)(tab)
     tab += translate([-tab_x / 2, tab_y / 2, 1])(chamfer(tab_x, 3))
