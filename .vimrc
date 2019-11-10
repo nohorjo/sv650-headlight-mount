@@ -56,3 +56,5 @@ augroup SolidPython
 augroup END
 
 command! OpenScad execute "vs _".expand("%:r").".scad"
+
+inoremap (( (<ESC>A)<ESC>%i
