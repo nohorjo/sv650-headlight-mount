@@ -7,7 +7,7 @@ from references import *
 from chamfer import *
 
 if __name__ == '__main__':
-    outer_r: float = 88
+    outer_r: float = 86 # 83 88 90
     thick: float = 3
     base_h: float = thick + 3
     model = circle(r = outer_r + thick)
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     gap = linear_extrude(thick)(gap)
     model -= gap
 
-    tab_r: float = 82
+    tab_r: float = 82 # 71.6 80
     tab_x: float = 10
     tab_y: float = 2
     tab_z: float = 8
@@ -32,8 +32,9 @@ if __name__ == '__main__':
     )
     tab = translate([0, tab_r, base_h])(tab)
 
-    for i in range(3):
-        model += rotate(120 * i, UP_VEC)(tab)
+    model += tab
+    model += rotate(130, DOWN_VEC)(tab) # 120
+    model += rotate(230, DOWN_VEC)(tab) # 240
 
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
 
