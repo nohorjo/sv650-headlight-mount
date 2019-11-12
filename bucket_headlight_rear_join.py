@@ -35,5 +35,15 @@ if __name__ == '__main__':
         )
     )
 
+    chopoff = linear_extrude(t)(polygon(points = [
+        [0, 0],
+        [bucket_tab_x - t, 0],
+        [0, y - tab_y]
+    ]))
+
+    model -= down(t)(chopoff)
+    model -= right(x)(rotate(180, FORWARD_VEC)(chopoff))
+
+
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
 
