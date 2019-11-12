@@ -5,8 +5,9 @@ from constants import *
 
 if __name__ == '__main__':
     t: float = 5
+    tab_overlap = 40 # 30
 
-    model = cube([bucket_tab_x, 30, t])
+    model = cube([bucket_tab_x, tab_overlap, t])
     model -= translate([bucket_tab_screw_offset_x, 10, -10])(
         cylinder(d = screw_d, h = t + 10)
 

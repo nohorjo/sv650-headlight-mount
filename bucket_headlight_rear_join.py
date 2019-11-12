@@ -5,9 +5,9 @@ from constants import *
 from chamfer import *
 
 if __name__ == '__main__':
-    x: float = 100
+    x: float = 97 # 100
     y: float = 45
-    z: float = 25
+    z: float = 17 # 25
     t: float = 5
     tab_y: float = y - 20
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     model = forward(y)(rotate(180, RIGHT_VEC)(model))
 
-    bucket_tab_z: float = 43
+    bucket_tab_z: float = 46 # 43
     model += right((x - bucket_tab_x) / 2)(
         cube([bucket_tab_x, t, bucket_tab_z])
         + forward(t)(chamfer(bucket_tab_x, 10))
