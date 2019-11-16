@@ -28,11 +28,12 @@ class MoveablePoint:
         self.x += v
         return self
 
-def fork():
+def fork(bg = True):
     model = cylinder(h = 200, d = fork_d)
     model = right(fork_dist)(model)
     model += cylinder(h = 200, d = fork_d)
-    model = background(model)
+    if bg:
+        model = background(model)
     
     return model
 
@@ -44,7 +45,7 @@ def indicator_hole(_debug = False):
     else:
         return super_hole(model, 'indicator_hole')
 
-def bucket():
+def bucket(bg = True):
     p = MoveablePoint()
     model = polygon([
         p.val(),
@@ -61,7 +62,10 @@ def bucket():
     model = up(25)(model)
     model += cylinder(h = 25, d = h)
 
-    return background(model)
+    if bg:
+        model = background(model)
+
+    return model 
 
 if __name__ == '__main__':
     model = bucket()
