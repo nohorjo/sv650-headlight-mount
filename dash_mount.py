@@ -1,3 +1,5 @@
+import math
+
 from solid import *
 from solid.utils import *
 
@@ -17,8 +19,20 @@ if __name__ == '__main__':
 
     plugs_mount = hull()(plug_holes(t)) - plug_holes(0)
 
-    angle: float = 18.78
-    offset_for_rotation: float = 215.46 + (lower_plug_d / 2)
+    trapezium = {
+        "base": 70.4,
+        "top": 92.2,
+        "side": 66.8,
+    }
+    trapezium["top_angle"] = math.degrees(
+        math.acos(((trapezium["top"] - trapezium["base"]) / 2) / trapezium["side"])
+    )
+    angle: float = 180 - (trapezium["top_angle"] * 2)
+    offset_for_rotation: float = (
+        (trapezium["top"] / (2 * math.cos(math.radians(trapezium["top_angle"]))))
+        - trapezium["side"]
+        + (lower_plug_d / 2)
+    )
     model = right(offset_for_rotation)(plugs_mount)
     model = rotate(angle, UP_VEC)(model)
     model += right(offset_for_rotation)(plugs_mount)
