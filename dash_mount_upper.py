@@ -22,11 +22,10 @@ trapezium["sides_angle"] = 180 - (trapezium["top_angle"] * 2)
 def dash_mount_upper():
     t: float = 3
     upper_plug_d: float = 7
-    plug_dist: float = 66.8 - ((upper_plug_d + lower_plug_d) / 2)
     plug_h: float = 10
 
     plug_holes = lambda t: (
-        right(plug_dist)(cylinder(h = plug_h, d = upper_plug_d  + (t * 2)))
+        right(trapezium["side"])(cylinder(h = plug_h, d = upper_plug_d  + (t * 2)))
         + cylinder(h = plug_h, d = lower_plug_d + (t * 2)) 
     )
 

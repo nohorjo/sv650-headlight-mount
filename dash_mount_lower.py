@@ -2,7 +2,7 @@ from solid import *
 from solid.utils import *
 
 from constants import *
-from references import bucket, MoveablePoint
+from references import bucket
 
 def dash_mount_lower():
     x: float = 175
