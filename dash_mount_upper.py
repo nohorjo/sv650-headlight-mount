@@ -60,7 +60,23 @@ def dash_mount_upper():
         )
     )
 
-    return mount_point
+    
+    holes = cylinder(h = dash_link_gap, d = screw_d)
+    for i in range(dash_screw_hole_count):
+        holes += right(i * (dash_link_base_x / dash_screw_hole_count))(
+            hole()(cylinder(h = dash_link_gap, d = screw_d))
+        )
+
+    screw_point = cube([30, 17, dash_link_gap - 1])
+    screw_point -= translate([10 / 2, 20 / 2])(holes)
+    screw_point = rotate(90, FORWARD_VEC)(screw_point)
+    screw_point = rotate(120, RIGHT_VEC)(screw_point)
+    screw_point += cube([dash_link_gap - 1, 26, 15])
+    screw_point = translate([-(dash_link_gap - 1) / 2, 7, 10])(screw_point)
+    
+    model = mount_point + screw_point
+
+    return model
 
 if __name__ == '__main__':
     model = dash_mount_upper()

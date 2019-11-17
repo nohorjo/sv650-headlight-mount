@@ -12,8 +12,10 @@ from dash_mount_link import dash_mount_link
 if __name__ == '__main__':
     tilt_angle: float = 60
 
-    model = translate([0, -60, 170])(
-        rotate(tilt_angle, RIGHT_VEC)(dash_mount_upper())
+    model = translate([0, -68, 175])(
+        rotate(tilt_angle, RIGHT_VEC)(
+            rotate(180, FORWARD_VEC)(dash_mount_upper())
+        )
     )
     model += dash_mount_lower()
 
