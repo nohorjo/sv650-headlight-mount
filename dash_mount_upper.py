@@ -4,11 +4,11 @@ from solid.utils import *
 from constants import *
 from references import MoveablePoint
 
-lower_plug_d: float = 9.5
+lower_plug_d: float = 10.5
 trapezium = {
-    "base": 70.4,
-    "top": 92.2,
-    "side": 66.8,
+    "base": 59.5,
+    "top": 83.5,
+    "side": 59,
 }
 trapezium["top_angle"] = math.degrees(
     math.acos(
@@ -21,7 +21,7 @@ trapezium["sides_angle"] = 180 - (trapezium["top_angle"] * 2)
 
 def dash_mount_upper():
     t: float = 3
-    upper_plug_d: float = 7
+    upper_plug_d: float = 8
     plug_h: float = 10
 
     plug_holes = lambda t: (
