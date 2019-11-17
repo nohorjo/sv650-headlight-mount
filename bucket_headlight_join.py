@@ -7,7 +7,7 @@ from references import *
 from chamfer import *
 
 if __name__ == '__main__':
-    outer_r: float = 85 # 86 88 90 83
+    outer_r: float = 86 # 85 86 88 90 83
     thick: float = 3
     base_h: float = thick + 3
     model = circle(r = outer_r + thick)
