@@ -8,7 +8,7 @@ import re
 filename = vim.eval("bufname('%')")
 importPattern = re.compile("^from \w+ import")
 
-os.system("python " + filename)
+os.system("python3 " + filename)
 
 with open(filename) as f:
     importLines = [ line for line in f if importPattern.match(line) ]
@@ -29,7 +29,7 @@ try:
     f = open(isdep)
     for line in f:
         if os.path.isfile(line.strip()):
-            os.system("python " + line)
+            os.system("python3 " + line)
     f.close()
 except FileNotFoundError:
     pass
