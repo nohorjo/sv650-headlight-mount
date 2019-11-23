@@ -28,7 +28,7 @@ all: $(patsubst %.py,stl/%.stl,$(SOURCES))
 .%.dep: %.py
 	python -c "$$GEN_DEPS" $<
 
-include $(patsubst %.py,.%.dep,$(SOURCES))
+-include $(patsubst %.py,.%.dep,$(SOURCES))
 
 _%.scad: %.py
 	python $<
