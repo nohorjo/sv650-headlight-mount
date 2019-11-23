@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     model += link
 
-    model += translate([0, 30, -50])(
+    model += translate([0, 31, -28])(
         rotate(90, RIGHT_VEC)(
             rotate(90, UP_VEC)(bucket_headlight_join())
         )
