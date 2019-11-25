@@ -10,10 +10,8 @@ from dash_mount_link import dash_mount_link
 from bucket_headlight_join import  bucket_headlight_join
 
 if __name__ == '__main__':
-    tilt_angle: float = 60
-
     model = translate([0, -68, 175])(
-        rotate(tilt_angle, RIGHT_VEC)(
+        rotate(90 - tilt_angle, RIGHT_VEC)(
             rotate(180, FORWARD_VEC)(dash_mount_upper())
         )
     )
