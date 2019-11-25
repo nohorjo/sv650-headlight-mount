@@ -10,7 +10,7 @@ from dash_mount_link import dash_mount_link
 from bucket_headlight_join import  bucket_headlight_join
 
 if __name__ == '__main__':
-    model = translate([0, -68, 175])(
+    model = translate([0, -24, 197])(
         rotate(90 - tilt_angle, RIGHT_VEC)(
             rotate(180, FORWARD_VEC)(dash_mount_upper())
         )
@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     link = dash_mount_link()
     link = rotate(90, FORWARD_VEC)(link)
-    link = rotate(120, RIGHT_VEC)(link)
+    link = rotate(dash_link_tilt, RIGHT_VEC)(link)
     link = translate([-dash_link_thick / 2, 10, 61])(link)
 
     model += link

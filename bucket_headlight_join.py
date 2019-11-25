@@ -62,14 +62,14 @@ def bucket_headlight_join():
     def screw_point_movements(model):
         model = rotate(90, RIGHT_VEC)(model)
         model = rotate(90, FORWARD_VEC)(model)
-        model = rotate(30, BACK_VEC)(model)
+        model = rotate(dash_link_tilt - 90, BACK_VEC)(model)
 
         return model
 
     screw_point = cube([30, 17, dash_link_gap - 1])
     screw_point -= translate([10 / 2, 20 / 2])(holes)
     screw_point = screw_point_movements(screw_point)
-    screw_point += rotate(30, FORWARD_VEC)(
+    screw_point += rotate(10, FORWARD_VEC)(
         screw_point_movements(cube([26, 17, dash_link_gap - 1]))
     )
     screw_point = translate([outer_r, dash_link_gap / 2, 26 - (thick * 2)])(screw_point)
