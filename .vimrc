@@ -5,7 +5,7 @@ python3 << EOF
 import os
 import re
 
-filename = vim.eval("bufname('%')")
+filename = os.path.normpath(vim.eval("bufname('%')"))
 importPattern = re.compile("^from \w+ import")
 
 os.system("python3 " + filename)
