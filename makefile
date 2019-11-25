@@ -37,5 +37,5 @@ stl/%.stl: _%.scad
 	openscad -D '$$fn=100' -m make -o $@ $< || echo -e "\033[1;41mFAIL\033[0m $@"
 
 clean:
-	rm stl/* *.scad .*.scad .*.dep
+	rm stl/* *.scad .*.scad .*.dep .*.isdep
 
