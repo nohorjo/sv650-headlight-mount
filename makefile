@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 
-SOURCES=$(shell grep -l scad_render_to_file *.py)
+SOURCES=$(shell grep -l scad_render_to_file *.py --exclude="dash_mount.py")
 
 define GEN_DEPS
 import os
