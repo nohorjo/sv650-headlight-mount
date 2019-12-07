@@ -43,7 +43,7 @@ def bucket_headlight_join():
     model = rotate(2 * math.degrees(math.asin(22 / inner_r)), UP_VEC)(model)
     model = rotate(180, RIGHT_VEC)(model)
 
-    top_arc_angle: float = 2 * math.degrees(math.asin(44 / inner_r))
+    top_arc_angle: float = 59.4 # 66.2
     top_arc = lambda rad, bigger = False: arc(
             rad = rad,
             start_degrees = -10 - top_arc_angle - (2 if bigger else 0),
@@ -54,11 +54,11 @@ def bucket_headlight_join():
     top_part = top_arc(outer_r + thick)
     top_part -= top_arc(outer_r - thick - top_part_gap, True)
     top_part -= top_arc(outer_r) - top_arc(outer_r - top_part_gap)
-    top_part = linear_extrude(20)(top_part)
+    top_part = linear_extrude(25)(top_part)
 
-    bucket_screw_holes = cylinder(h = 15, d = 6)
+    bucket_screw_holes = cylinder(h = 15, d = 5)
     bucket_screw_holes = rotate(90, FORWARD_VEC)(bucket_screw_holes)
-    bucket_screw_holes = translate([outer_r - 10, 0, 13])(bucket_screw_holes)
+    bucket_screw_holes = translate([outer_r - 10, 0, 10])(bucket_screw_holes)
     bucket_screw_holes = rotate(top_arc_angle, UP_VEC)(bucket_screw_holes) + rotate(top_arc_angle, DOWN_VEC)(bucket_screw_holes)
 
     top_part -= bucket_screw_holes
