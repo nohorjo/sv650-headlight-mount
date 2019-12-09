@@ -3,7 +3,7 @@ from solid.utils import *
 
 from constants import *
 
-if __name__ == '__main__':
+def rear_bucket_plate():
     t: float = 5
     tab_overlap = 50
     x = 70
@@ -13,5 +13,11 @@ if __name__ == '__main__':
         cylinder(d = screw_d, h = t + 10)
         + right(bucket_tab_x - (bucket_tab_screw_offset_x * 2))(cylinder(d = screw_d, h = t + 10))
     )
+
+    return model
+
+if __name__ == '__main__':
+    model = rear_bucket_plate()
+
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
 

@@ -4,7 +4,7 @@ from solid.utils import *
 from constants import *
 from chamfer import *
 
-if __name__ == '__main__':
+def bucket_headlight_rear_join():
     x: float = 97 # 100
     y: float = 45
     z: float = 17 # 25
@@ -44,6 +44,10 @@ if __name__ == '__main__':
     model -= down(t)(chopoff)
     model -= right(x)(rotate(180, FORWARD_VEC)(chopoff))
 
+    return model
+
+if __name__ == '__main__':
+    model = bucket_headlight_rear_join();
 
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
 
