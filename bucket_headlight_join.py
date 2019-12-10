@@ -95,6 +95,16 @@ def bucket_headlight_join():
 
     model += top_part
 
+    buffer_h: float = 8
+    buffer = translate([0, inner_r, -buffer_h - base_h])(cube([3, outer_r - inner_r + thick, buffer_h]))
+    buffers = buffer
+
+    gap_angle = 25
+    for i in range(gap_angle, 360, gap_angle):
+        buffers += rotate(i, UP_VEC)(buffer)
+
+    model += buffers
+
     return model
 
 if __name__ == '__main__':
