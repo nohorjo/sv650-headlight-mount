@@ -31,9 +31,9 @@ if __name__ == '__main__':
         )
     )
 
-    model += translate([-50, -20, -55])(rotate(90, RIGHT_VEC)(
+    model += translate([-50, -10, -43])(rotate(90, RIGHT_VEC)(
             bucket_headlight_rear_join()
-            + translate([16, -20, 46])(rear_bucket_plate())
+            + translate([44 + (2 * 2), 25 + 45, 34 + 3])(rotate(180, RIGHT_VEC)(rear_bucket_plate()))
     ))
 
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
