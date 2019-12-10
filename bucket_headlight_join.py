@@ -50,7 +50,7 @@ def bucket_headlight_join():
             end_degrees = 10 + top_arc_angle + (2 if bigger else 0)
     )
 
-    top_part_gap: float = 3
+    top_part_gap: float = 5
     top_part = top_arc(outer_r + thick)
     top_part -= top_arc(outer_r - thick - top_part_gap, True)
     top_part -= top_arc(outer_r) - top_arc(outer_r - top_part_gap)
