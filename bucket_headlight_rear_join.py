@@ -4,45 +4,42 @@ from solid.utils import *
 from constants import *
 from chamfer import *
 
-def bucket_headlight_rear_join():
-    x: float = 97 # 100
-    y: float = 45
-    z: float = 17 # 25
-    t: float = 5
-    tab_y: float = y - 20
+x: float = 97
+y: float = 25
+z: float = 17
+t: float = 5
 
+def base():
     model = cube([x, y, t])
-    model += cube([t, tab_y, z + t])
-    model += right(x - t)(cube([t, tab_y, z + t]))
 
-    model -= translate([0, tab_y / 2, z])(
+    tab = cube([t, y, z + t])
+    tab += translate([t, y, t])(rotate(90, DOWN_VEC)(chamfer(y, 3)))
+
+    model += tab
+    model += translate([x, y])(rotate(180, UP_VEC)(tab))
+
+    model -= translate([0, y / 2, z])(
         rotate(90, FORWARD_VEC)(cylinder(d = screw_d, h = x))
     )
 
     model = forward(y)(rotate(180, RIGHT_VEC)(model))
 
-    bucket_tab_z: float = 46 # 43
-    model += right((x - bucket_tab_x) / 2)(
-        cube([bucket_tab_x, t, bucket_tab_z])
-        + forward(t)(chamfer(bucket_tab_x, 10))
-        + translate([0, -20, bucket_tab_z - t])(
-            cube([bucket_tab_x, 20, t])
-            + forward(20)(rotate(180, RIGHT_VEC)(chamfer(bucket_tab_x, 10)))
-            - translate([bucket_tab_screw_offset_x, 10, -10])(
-                cylinder(d = screw_d, h = t + 10)
-                + right(bucket_tab_x - (bucket_tab_screw_offset_x * 2))(cylinder(d = screw_d, h = t + 10))
-            )
-        )
-    )
+    return model
 
-    chopoff = linear_extrude(t)(polygon(points = [
-        [0, 0],
-        [bucket_tab_x - t, 0],
-        [0, y - tab_y]
-    ]))
+def bucket_headlight_rear_join():
+    model = base()
+    
+    cx: float = 3
+    tz: float = 20
 
-    model -= down(t)(chopoff)
-    model -= right(x)(rotate(180, FORWARD_VEC)(chopoff))
+    upper_tab = cube([t, y, tz])
+    upper_tab += translate([t, y])(rotate(90, DOWN_VEC)(chamfer(y, cx)))
+    upper_tab += rotate(90, UP_VEC)(chamfer(y, cx)) 
+
+    offset = 15
+
+    model += right(cx + offset)(upper_tab)
+    model += right(x - t - cx - offset)(upper_tab)
 
     return model
 

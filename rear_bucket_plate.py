@@ -3,15 +3,28 @@ from solid.utils import *
 
 from constants import *
 
-def rear_bucket_plate():
-    t: float = 5
-    tab_overlap = 50
-    x = 70
+def shell(t: float = 0):
+    big_r: float = 44 + t
+    small_r: float = 20 + t
 
-    model = cube([x, tab_overlap, t])
-    model -= translate([(x / 2) - bucket_tab_screw_offset_x, 10, -10])(
-        cylinder(d = screw_d, h = t + 10)
-        + right(bucket_tab_x - (bucket_tab_screw_offset_x * 2))(cylinder(d = screw_d, h = t + 10))
+    y: float = 114 - big_r + (t * 2) 
+
+    model = circle(r = small_r)
+    model = left(big_r - small_r)(model) + right(big_r - small_r)(model)
+    model = forward(small_r)(model)
+    model += forward(y)(circle(r = big_r))
+
+    model = hull()(model)
+
+    return model
+
+def rear_bucket_plate():
+    h: float = 4
+    t: float = 3
+    model = linear_extrude(h)(shell(t))
+    model += up(h)(
+        linear_extrude(1)(shell(t))
+        - forward(t)(linear_extrude(1)(shell()))
     )
 
     return model
