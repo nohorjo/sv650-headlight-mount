@@ -10,6 +10,7 @@ from dash_mount_link import dash_mount_link
 from bucket_headlight_join import  bucket_headlight_join
 from bucket_headlight_rear_join import bucket_headlight_rear_join
 from rear_bucket_plate import rear_bucket_plate
+from rear_plate_secure import rear_plate_secure
 
 if __name__ == '__main__':
     model = translate([0, -24, 197])(
@@ -32,8 +33,9 @@ if __name__ == '__main__':
     )
 
     model += translate([-50, -10, -43])(rotate(90, RIGHT_VEC)(
-            color('red')(bucket_headlight_rear_join())
-            + translate([44 + (2 * 2), 25 + 45, 34 + 3])(rotate(180, RIGHT_VEC)(color('white')(rear_bucket_plate())))
+        color('red')(bucket_headlight_rear_join())
+        + translate([44 + (2 * 2), 25 + 45, 34 + 3])(rotate(180, RIGHT_VEC)(color('white')(rear_bucket_plate())))
+        + translate([23.5, 0, 37.5])(color('black')(rear_plate_secure()))
     ))
 
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
