@@ -16,6 +16,14 @@ def shell(t: float = 0):
 
     model = hull()(model)
 
+    tab_hole = square([7, rear_join_y + 2])
+
+    sep: float = big_r - 19
+    model -= translate([-2.75, 44])(
+        left(sep)(tab_hole)
+        + right(sep)(tab_hole)
+    )
+
     return model
 
 def rear_bucket_plate():
