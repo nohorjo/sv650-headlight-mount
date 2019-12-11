@@ -29,7 +29,7 @@ def bucket_headlight_rear_join():
     model = base()
     
     cx: float = 3
-    tz: float = 20
+    tz: float = 37 + 5
 
     upper_tab = cube([t, rear_join_y, tz])
     upper_tab += translate([t, rear_join_y])(rotate(90, DOWN_VEC)(chamfer(rear_join_y, cx)))
