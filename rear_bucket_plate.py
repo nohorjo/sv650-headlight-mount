@@ -3,11 +3,13 @@ from solid.utils import *
 
 from constants import *
 
+total_y: float = 114
+
 def shell(t: float = 0):
     big_r: float = 44 + t
     small_r: float = 20 + t
 
-    y: float = 114 - big_r + (t * 2) 
+    y: float = total_y - big_r + (t * 2)
 
     model = circle(r = small_r)
     model = left(big_r - small_r)(model) + right(big_r - small_r)(model)
@@ -15,6 +17,7 @@ def shell(t: float = 0):
     model += forward(y)(circle(r = big_r))
 
     model = hull()(model)
+
 
     return model
 
@@ -34,6 +37,9 @@ def rear_bucket_plate():
         left(sep)(tab_hole)
         + right(sep)(tab_hole)
     )
+
+    cable_hole_d: float = 35
+    model -= forward(total_y - (cable_hole_d / 2))(cylinder(h = h, d = cable_hole_d))
 
 
     return model
