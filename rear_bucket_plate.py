@@ -22,12 +22,13 @@ def shell(t: float = 0):
     return model
 
 def rear_bucket_plate():
-    h: float = 4
+    h: float = 3.5
     t: float = 3
     model = linear_extrude(h)(shell(t))
+    lip: float = 1.5
     model += up(h)(
-        linear_extrude(1)(shell(t))
-        - forward(t)(linear_extrude(1)(shell()))
+        linear_extrude(lip)(shell(t))
+        - forward(t)(linear_extrude(lip)(shell()))
     )
 
     tab_hole = cube([7, rear_join_y + 2, h])
