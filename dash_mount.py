@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     model += translate([-50, -10, -43])(rotate(90, RIGHT_VEC)(
         color('red')(bucket_headlight_rear_join())
-        + translate([44 + (2 * 2), 25 + 45, 34 + 3])(rotate(180, RIGHT_VEC)(color('white')(rear_bucket_plate())))
+        + translate([44 + (2 * 2), 25 + 53, 34 + 3])(rotate(180, RIGHT_VEC)(color('white')(rear_bucket_plate())))
         + translate([23.5, 0, 37.5])(color('black')(rear_plate_secure()))
     ))
 

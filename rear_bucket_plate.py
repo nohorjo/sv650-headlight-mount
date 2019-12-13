@@ -30,7 +30,7 @@ def rear_bucket_plate():
     tab_hole = cube([7, rear_join_y + 2, h])
 
     sep: float = 28
-    model -= translate([-2.75, 44])(
+    model -= translate([-2.75, 52])(
         left(sep)(tab_hole)
         + right(sep)(tab_hole)
     )
