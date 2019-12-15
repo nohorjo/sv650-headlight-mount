@@ -5,7 +5,7 @@ from constants import *
 from references import MoveablePoint
 
 def dash_mount_link():
-    height: float = 130
+    height: float = 65
     end_height: float = 15
     shaft_x: float = 20
     y_chamfer: float = 5
