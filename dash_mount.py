@@ -13,7 +13,7 @@ from rear_bucket_plate import rear_bucket_plate
 from rear_plate_secure import rear_plate_secure
 
 if __name__ == '__main__':
-    model = translate([0, -13, 132])(
+    model = translate([0, -14, 129])(
         rotate(90 - tilt_angle, RIGHT_VEC)(
             rotate(180, FORWARD_VEC)(color('blue')(dash_mount_upper()))
         )

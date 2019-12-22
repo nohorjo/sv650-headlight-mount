@@ -12,6 +12,6 @@ dash_link_end_thick: float = 6
 dash_link_gap: float = dash_link_thick - (2 * dash_link_end_thick)
 
 dash_link_tilt: float = 100
-tilt_angle: float = 60
+tilt_angle: float = 40
 
 rear_join_y: float = 25

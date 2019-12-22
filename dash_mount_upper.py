@@ -71,7 +71,7 @@ def dash_mount_upper():
     screw_point -= translate([10 / 2, 20 / 2])(holes)
     screw_point = rotate(90, FORWARD_VEC)(screw_point)
     screw_point = rotate(270 - dash_link_tilt - tilt_angle, RIGHT_VEC)(screw_point)
-    screw_point += cube([dash_link_gap - 1, 26, 15])
+    screw_point += cube([dash_link_gap - 1, 23, 19.3])
     screw_point = translate([-(dash_link_gap - 1) / 2, 7, 10])(screw_point)
     
     model = mount_point + screw_point
