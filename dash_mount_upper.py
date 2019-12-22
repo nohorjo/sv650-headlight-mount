@@ -67,11 +67,18 @@ def dash_mount_upper():
             hole()(cylinder(h = dash_link_gap, d = screw_d))
         )
 
-    screw_point = cube([30, 17, dash_link_gap - 1])
+    sp_x: float = dash_link_gap - 1
+    sp_y: float = 30
+    sp_z: float = 17
+    screw_point = cube([sp_y, sp_z, sp_x])
     screw_point -= translate([10 / 2, 20 / 2])(holes)
     screw_point = rotate(90, FORWARD_VEC)(screw_point)
     screw_point = rotate(270 - dash_link_tilt - tilt_angle, RIGHT_VEC)(screw_point)
-    screw_point += cube([dash_link_gap - 1, 23, 19.3])
+    screw_point += cube([
+        sp_x,
+        sp_y * math.cos(math.radians(80 - tilt_angle)),
+        sp_y * math.sin(math.radians(80 - tilt_angle)),
+    ])
     screw_point = translate([-(dash_link_gap - 1) / 2, 7, 10])(screw_point)
     
     model = mount_point + screw_point
