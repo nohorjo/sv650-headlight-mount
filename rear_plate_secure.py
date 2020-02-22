@@ -5,9 +5,9 @@ from constants import *
 
 def rear_plate_secure():
     x: float = 50
-    z: float = 7
+    z: float = 15
     model = cube([x, rear_join_y, z])
-    model -= translate([0, rear_join_y / 2, z / 2])(rotate(90, FORWARD_VEC)(cylinder(h = x, d = screw_d)))
+    model -= translate([0, rear_join_y / 2, 3.5])(rotate(90, FORWARD_VEC)(cylinder(h = x, d = screw_d)))
 
     return model
 
