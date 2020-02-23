@@ -49,10 +49,9 @@ def bucket(bg = True):
     p = MoveablePoint()
     model = polygon([
         p.val(),
-        p.up(35.4 + 40).val(),
+        p.up(35.4 + 18).val(),
         p.right(86 / 2).val(),
-        p.down(16).val(),
-        p.down(40 - 16 + 35.4).right(35.4).val(),
+        p.down(18 + 35.4).right(35.4).val(),
     ])
     
     model = rotate_extrude()(model)

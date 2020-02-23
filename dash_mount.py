@@ -36,5 +36,7 @@ if __name__ == '__main__':
         + translate([23.5, 0, 37.5])(color('black')(rear_plate_secure()))
     ))
 
+    model += translate([0, 32, -30])(rotate(90, RIGHT_VEC)(bucket()))
+
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
 
