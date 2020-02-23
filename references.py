@@ -66,6 +66,30 @@ def bucket(bg = True):
 
     return model 
 
+def windscreen(bg = True):
+    p = MoveablePoint()
+    side = linear_extrude(8)(polygon([
+        p.val(),
+        p.right(160).up(50).val(),
+        p.up(290).val(),
+    ]))
+
+    model = rotate(50, BACK_VEC)(side)
+    model += right(120 + 2 * 160 * math.sin(math.radians(90 - 50)))(rotate(180 - 50, BACK_VEC)(side))
+    model += translate([
+        160 * math.cos(math.radians(50)),
+        50,
+        160 * math.sin(math.radians(50)) - 4,
+    ])(cube([120, 290, 8]))
+
+    model = left(160 * math.cos(math.radians(50)) + 120 / 2)(model)
+
+    if bg:
+        model = background(model)
+
+    return model
+
+
 if __name__ == '__main__':
     model = bucket()
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])

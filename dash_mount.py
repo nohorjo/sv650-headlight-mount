@@ -2,7 +2,7 @@ from solid import *
 from solid.utils import *
 
 from constants import *
-from references import bucket
+from references import bucket, windscreen
 from dash_mount_upper import dash_mount_upper, trapezium, lower_plug_d
 from dash_mount_link import dash_mount_link
 from bucket_headlight_join import  bucket_headlight_join
@@ -36,6 +36,7 @@ if __name__ == '__main__':
         + translate([23.5, 0, 37.5])(color('black')(rear_plate_secure()))
     ))
 
+    model += translate([0, 0, 250])(rotate(50, LEFT_VEC)(windscreen()))
     model += translate([0, 32, -30])(rotate(90, RIGHT_VEC)(bucket()))
 
     scad_render_to_file(model, '_%s.scad'% __file__[:-3])
