@@ -59,8 +59,12 @@ def dash_mount_link():
 
     model += support
 
+    gopro_mount = import_stl('lib/Gopro_support_camera_a_vis.stl')
+    gopro_mount += forward(9.5)(cube([18, 3, 40]))
+    gopro_mount += back(12.5)(cube([18, 3, 40]))
+
     model += translate([22, 25, 25])(
-        rotate(90, RIGHT_VEC)(rotate(90, FORWARD_VEC)(import_stl('lib/Gopro_support_camera_a_vis.stl')))
+        rotate(90, RIGHT_VEC)(rotate(90, FORWARD_VEC)(gopro_mount))
     )
 
     return model
