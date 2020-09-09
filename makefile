@@ -21,9 +21,11 @@ with open(filename) as f:
 endef
 export GEN_DEPS
 
-.PHONY: all clean
+.PHONY: all clean scad
 
 all: $(patsubst %.py,stl/%.stl,$(SOURCES))
+
+scad: $(patsubst %.py,_%.scad,$(SOURCES))
 
 .%.dep: %.py
 	python -c "$$GEN_DEPS" $<
