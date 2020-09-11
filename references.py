@@ -27,14 +27,17 @@ class MoveablePoint:
         self.x += v
         return self
 
-    def set(self, x = 0, y = 0, angle = 0):
-        self.x = x
-        self.y = y
-        self.angle = 0
+    def set(self, x = None, y = None, angle = None):
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
+        if angle is not None:
+            self.angle = angle
         return self
 
     def reset(self):
-        return self.set()
+        return self.set(0, 0, 0)
 
     def rotate(self, degrees):
         self.angle += degrees
