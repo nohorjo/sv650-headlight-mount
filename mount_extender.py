@@ -22,21 +22,22 @@ def mount_part():
 if __name__ == '__main__':
     p = MoveablePoint()
     y: float = 35
-    x: float = 7
-    model = linear_extrude(y)(polygon([
+    x: float = 2
+    t: float = 1.5
+    cross = linear_extrude(y)(polygon([
         p.val(),
         p.up(30).val(),
         p.up(10).right(x).val(),
         p.up(20).val(),
-        p.right(x).val(),
-        p.down(24).val(),
+        p.right(t).val(),
+        p.down(23).val(),
         p.down(10).left(x).val(),
         p.set(y = 0).val(),
     ]))
-    model = right(y / 2)(rotate(90, BACK_VEC)(model))
+    model = right(y / 2)(rotate(90, BACK_VEC)(cross))
 
     model -= super_hole(forward(50)(cylinder(h = 50, d = 9)), 'bolt')
-    model -= up((x - mh) / 2)(mount_part())
+    model -= up((t - mh) / 2)(mount_part())
 
     model *= hull()(linear_extrude(40)(
         square([y, 1], True)
