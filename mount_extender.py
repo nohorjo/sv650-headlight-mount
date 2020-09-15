@@ -1,7 +1,6 @@
 from solid import *
 from solid.utils import *
 
-from constants import *
 from super_hole import *
 from references import *
 
@@ -36,7 +35,7 @@ if __name__ == '__main__':
     ]))
     model = right(y / 2)(rotate(90, BACK_VEC)(cross))
 
-    model -= super_hole(forward(50)(cylinder(h = 50, d = 9)), 'bolt')
+    model -= super_hole(translate([0, 50, -25])(cylinder(h = 50, d = 9)), 'bolt')
     model -= up((t - mh) / 2)(mount_part())
 
     model *= hull()(linear_extrude(40)(
