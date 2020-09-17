@@ -4,7 +4,7 @@ from solid.utils import *
 from references import MoveablePoint
 from super_hole import *
 
-def headlamp_part():# {{{
+def headlamp_part():
     p = MoveablePoint()
     hole = polygon([
         p.val(),
@@ -16,16 +16,16 @@ def headlamp_part():# {{{
         [0, 7],
     ])
     hole = linear_extrude(5)(hole)
-    hole += translate([7.5, 9.5, -16])(linear_extrude(25)(
+    hole += translate([7.5, 9.5, -13])(linear_extrude(25)(
         back(1.5)(circle(d = 6))
         + translate([9, 1.5])(circle(d = 6))
         + right(18)(circle(d = 6))
     ))
-    hole += translate([0, 4, -10.5])(cube([90, 12.5, 4.5]))
+    hole += translate([0, -4, -16])(cube([35, 20, 10]))
 
     hole = super_hole(hole, 'headlamp_part_hole')
 
-    model = translate([0, -3, -3])(linear_extrude(11)(polygon([
+    model = translate([0, -3, -3])(linear_extrude(15)(polygon([
         p.reset().val(),
         p.right(42).val(),
         p.up(18).val(),
@@ -38,9 +38,9 @@ def headlamp_part():# {{{
     model = rotate(90, BACK_VEC)(model)
     model += translate([3, 0, 0])(cube([40, 30, 70]))
 
-    return model# }}}
+    return model
 
-def dash_mount_upper():# {{{
+def dash_mount_upper():
     trapezium = {
         "base": 59.5,
         "top": 83.5,
@@ -62,7 +62,7 @@ def dash_mount_upper():# {{{
 
     plug_holes = lambda t: (
         right(trapezium["side"])(cylinder(h = plug_h, d = upper_plug_d  + (t * 2)))
-        + cylinder(h = plug_h, d = lower_plug_d + (t * 2)) 
+        + cylinder(h = plug_h, d = lower_plug_d + (t * 2))
     )
 
     plugs_mount = hull()(plug_holes(t)) - super_hole(plug_holes(0), 'plug_holes')
@@ -97,7 +97,7 @@ def dash_mount_upper():# {{{
     mount_point -= forward(25)(super_hole(cylinder(h = 20, d = 10), 'another_hole'))
     mount_point -= translate([-100, -100, -200])(super_hole(cube([200, 200, 200]), 'dash_cube'))
 
-    return mount_point# }}}
+    return mount_point
 
 if __name__ == '__main__':
     model = dash_mount_upper()

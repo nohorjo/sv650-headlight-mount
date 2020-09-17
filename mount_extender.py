@@ -27,20 +27,20 @@ if __name__ == '__main__':
         p.val(),
         p.up(30).val(),
         p.up(10).right(x).val(),
-        p.up(20).val(),
+        p.up(30).val(),
         p.right(t).val(),
-        p.down(23).val(),
+        p.down(33).val(),
         p.down(10).left(x).val(),
         p.set(y = 0).val(),
     ]))
     model = right(y / 2)(rotate(90, BACK_VEC)(cross))
 
-    model -= super_hole(translate([0, 50, -25])(cylinder(h = 50, d = 9)), 'bolt')
+    model -= super_hole(translate([0, 60, -25])(cylinder(h = 50, d = 9)), 'bolt')
     model -= up((t - mh) / 2)(mount_part())
 
     model *= hull()(linear_extrude(40)(
         square([y, 1], True)
-        + forward(50)(circle(d = 20))
+        + forward(60)(circle(d = 20))
     ))
 
     model = minkowski()(model, sphere(r = 3))
