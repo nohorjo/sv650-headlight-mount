@@ -4,22 +4,7 @@ from solid.utils import *
 from references import MoveablePoint
 from super_hole import *
 
-lower_plug_d: float = 10.5
-trapezium = {
-    "base": 59.5,
-    "top": 83.5,
-    "side": 59,
-}
-trapezium["top_angle"] = math.degrees(
-    math.acos(
-        ((trapezium["top"] - trapezium["base"]) / 2)
-        / trapezium["side"]
-    )
-)
-trapezium["height"] = math.sin(math.radians(trapezium["top_angle"])) * trapezium["side"]
-trapezium["sides_angle"] = 180 - (trapezium["top_angle"] * 2)
-
-def headlamp_part():
+def headlamp_part():# {{{
     p = MoveablePoint()
     hole = polygon([
         p.val(),
@@ -53,11 +38,26 @@ def headlamp_part():
     model = rotate(90, BACK_VEC)(model)
     model += translate([3, 0, 0])(cube([40, 30, 70]))
 
-    return model
+    return model# }}}
 
 def dash_mount_upper():# {{{
+    trapezium = {
+        "base": 59.5,
+        "top": 83.5,
+        "side": 59,
+    }
+    trapezium["top_angle"] = math.degrees(
+        math.acos(
+            ((trapezium["top"] - trapezium["base"]) / 2)
+            / trapezium["side"]
+        )
+    )
+    trapezium["height"] = math.sin(math.radians(trapezium["top_angle"])) * trapezium["side"]
+    trapezium["sides_angle"] = 180 - (trapezium["top_angle"] * 2)
+
     t: float = 3
     upper_plug_d: float = 8
+    lower_plug_d: float = 10.5
     plug_h: float = 10
 
     plug_holes = lambda t: (
